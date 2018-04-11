@@ -131,6 +131,7 @@ export class Map extends Component {
 
   render() {
     const { centerPosition, fetchPosition } = this.props;
+    console.log(this.props.shops);
     const ShopsMarkers = this.shopsCluster.map(shop => (
       <ShopMarker
         {...shop}

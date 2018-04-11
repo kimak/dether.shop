@@ -52,10 +52,13 @@ export const distance = (pos1, pos2) => {
  * @return {[type]}          [description]
  */
 export const getClusterData = (data, propsMap) => {
+  const maxZoom = 16;
+  const ratio = (maxZoom - propsMap.zoom) / maxZoom;
+  console.log(100 * ratio);
   const cl = supercluster(data, {
     minZoom: 0,
-    maxZoom: 15,
-    radius: 100, // set this to if you want to change the distance to be use to clusters
+    maxZoom,
+    radius: 100 * ratio, // set this to if you want to change the distance to be use to clusters
   });
 
   return cl(propsMap).map(({ wx, wy, numPoints, points }) => ({

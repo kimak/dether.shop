@@ -30,9 +30,36 @@ const mapReducer = (state = initialState, { type, payload }) => {
     }
     case 'FETCH_SHOPS_SUCCESS': {
       const { shops } = payload.data;
+      const fakes = [
+        {
+          id: '5abfbdb1ca23ebc573adfb9a',
+          lat: 43.17207516135946,
+          lng: -8.79624179081452,
+          name: 'portugal',
+        },
+        {
+          id: '5abfbdb1ca23ebc573adfb9d',
+          name: 'sud america',
+          lat: 5.787907970157472,
+          lng: -55.63989250695488,
+        },
+        {
+          id: '5abfbdb1ca23ebc573adfb9y',
+          name: 'ireland',
+          lat: 52.266318886285866,
+          lng: -9.76098625695488,
+        },
+        ,
+        {
+          id: '5abfbdb1ca23ebc573adfb9z',
+          name: 'bretagne',
+          lat: 48.143127901054406,
+          lng: -4.13803866581452,
+        },
+      ];
       return {
         ...state,
-        shops: uniqueArray([...state.shops, ...shops], 'id'),
+        shops: uniqueArray([...fakes /* , ...state.shops, ...shops */], 'id'),
       };
     }
     case 'FETCH_POSITION_BY_IP_SUCCESS': {
