@@ -13,6 +13,7 @@ import ShopRouter from '../ShopRouter';
 
 const LeftWrapper = styled.div`
   width: 100%;
+  height: 100%;
   max-width: 42rem;
   margin: auto;
   padding: ${tokens.spaces.m};

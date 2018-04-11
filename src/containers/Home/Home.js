@@ -26,7 +26,7 @@ import {
 
 // Components
 
-import { Button, Message, SvgHome, Footer } from '../../components';
+import { Button, Message, SvgHome, Footer, Layout } from '../../components';
 import { H1 } from '../../components/Headings';
 import { Padding } from '../../components/Spaces';
 import TermsValidation from './TermsValidation';
@@ -119,43 +119,47 @@ export class Home extends PureComponent {
     const error = this.checkErrors();
 
     return (
-      <React.Fragment>
-        <Wrapper>
-          <SvgHome />
+      <Layout>
+        <Layout.Body>
+          <Wrapper>
+            <SvgHome />
 
-          <Padding bottom="m">
-            <H1>
-              {tr('add.home.title')}&nbsp;
-              <Version>v{config.appVersion}</Version>
-            </H1>
-          </Padding>
-
-          <Padding vertical="l">
-            <span>{tr('add.home.desc')}</span>
-          </Padding>
-
-          {error ? (
-            <Message theme="error" alignCenter>
-              {error}
-            </Message>
-          ) : (
-            <Padding vertical="l">
-              <TermsValidation
-                shake={shake}
-                checked={checked}
-                handleCheck={this.onCheck}
-                toggleTermsModal={toggleTermsModal}
-              />
-              <Button fullWidth theme="primary" onClick={this.onClick}>
-                {tr('add.home.bt_add')}
-              </Button>
+            <Padding bottom="m">
+              <H1>
+                {tr('add.home.title')}&nbsp;
+                <Version>v{config.appVersion}</Version>
+              </H1>
             </Padding>
-          )}
-        </Wrapper>
-        <Padding vertical="s">
-          <Footer toggleTermsModal={toggleTermsModal} />
-        </Padding>
-      </React.Fragment>
+
+            <Padding vertical="l">
+              <span>{tr('add.home.desc')}</span>
+            </Padding>
+
+            {error ? (
+              <Message theme="error" alignCenter>
+                {error}
+              </Message>
+            ) : (
+              <Padding vertical="l">
+                <TermsValidation
+                  shake={shake}
+                  checked={checked}
+                  handleCheck={this.onCheck}
+                  toggleTermsModal={toggleTermsModal}
+                />
+                <Button fullWidth theme="primary" onClick={this.onClick}>
+                  {tr('add.home.bt_add')}
+                </Button>
+              </Padding>
+            )}
+          </Wrapper>
+        </Layout.Body>
+        <Layout.Footer>
+          <Padding vertical="s">
+            <Footer toggleTermsModal={toggleTermsModal} />
+          </Padding>
+        </Layout.Footer>
+      </Layout>
     );
   };
 }
